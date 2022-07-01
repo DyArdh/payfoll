@@ -39,6 +39,18 @@ class DatabaseSeeder extends Seeder
             'email' => 'budipras1@gmail.com',
             'password' => bcrypt('budi12345'),
         ]);
+
+        User::create([
+            'name' => 'Udin P.',
+            'place_of_birth' => 'Kediri',
+            'date_of_birth' => '1989-11-01',
+            'religion' => 'Islam',
+            'address' => 'Jln. Pucung No.01, Pati, Kediri',
+            'phone' => '085123456789',
+            'position_id' => '2',
+            'email' => 'udinp@gmail.com',
+            'password' => bcrypt('udin12345'),
+        ]);
         
         User::create([
             'name' => 'Arman B.',

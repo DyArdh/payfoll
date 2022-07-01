@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ListKaryawan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ListKaryawanController extends Controller
@@ -39,23 +39,12 @@ class ListKaryawanController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ListKaryawan  $listKaryawan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ListKaryawan $listKaryawan)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ListKaryawan  $listKaryawan
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(ListKaryawan $listKaryawan)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +53,10 @@ class ListKaryawanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ListKaryawan  $listKaryawan
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ListKaryawan $listKaryawan)
+    public function update(Request $request)
     {
         //
     }
@@ -75,10 +64,10 @@ class ListKaryawanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ListKaryawan  $listKaryawan
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ListKaryawan $listKaryawan)
+    public function destroy($id)
     {
         //
     }
