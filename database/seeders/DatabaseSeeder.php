@@ -17,7 +17,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Position::create([
-            'position' => 'Admin',
+            'position' => 'Direktur',
+        ]);
+
+        Position::create([
+            'position' => 'Personalia',
         ]);
 
         Position::create([
@@ -43,7 +47,7 @@ class DatabaseSeeder extends Seeder
             'religion' => 'Katolik',
             'address' => 'Jln. Jawa No.01, Sumber, Malang',
             'phone' => '087775098345',
-            'position_id' => '2',
+            'position_id' => '3',
             'email' => 'armanb@gmail.com',
             'password' => bcrypt('arman12345'),
         ]);

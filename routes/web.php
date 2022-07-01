@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ListKaryawanController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [LoginController::class, 'logout']);
+
+Route::middleware(['guest'])->group(function() {
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate']);
+});
+
+Route::middleware(['auth'])->group(function() {
+    Route::get('/logout', [LoginController::class, 'logout']);
+    Route::resource('/listKaryawan', ListKaryawanController::class);
 });
