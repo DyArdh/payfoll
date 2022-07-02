@@ -14,7 +14,7 @@ class DirekturController extends Controller
     public function index()
     {
 
-        $karyawan = User::where('position_id', '3')->orderBy('name', 'asc')->get();
+        $karyawan = User::where('position_id', '3')->orderBy('name', 'asc')->paginate(10);
         return view('direktur.list-karyawan', compact('karyawan'));
     }
     public function personalia ()

@@ -20,6 +20,15 @@
               @endcan
             </nav>
           </div>
+          <a class="nav-link" href="{{ route('attendance.index') }}">
+            <div class="sb-nav-link-icon"><i class="fas fa-clipboard-user"></i></div>
+            Absensi
+          </a>
+
+          <a class="nav-link" href="{{ route('salary.index') }}">
+            <div class="sb-nav-link-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            Rincian Gaji
+          </a>
         </div>
       </div>
     </nav>

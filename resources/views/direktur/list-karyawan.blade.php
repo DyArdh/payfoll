@@ -24,14 +24,14 @@
 
                         <tbody>
                             <?php $no = 1 ?>
-                            @forelse ($karyawan as $kr)
+                            @forelse ($karyawan as $key => $row)
                             <tr>
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $kr->name }}</td>
-                                <td>{{ $kr->date_of_birth }}</td>
-                                <td>{{ $kr->religion }}</td>
-                                <td>{{ $kr->phone }}</td>
-                                <td>{{ $kr->address }}</td>
+                                <td>{{ $karyawan->firstItem() + $key }}</td>
+                                <td>{{ $row->name }}</td>
+                                <td>{{ $row->date_of_birth }}</td>
+                                <td>{{ $row->religion }}</td>
+                                <td>{{ $row->phone }}</td>
+                                <td>{{ $row->address }}</td>
                                 <td>hapus</td>
                             </tr>              
                             @empty
@@ -42,6 +42,19 @@
                         </tbody>     
                     </table> 
                     </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ $karyawan->links() }}
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <button class="btn btn-primary">Tambah Karyawan</button>
+                        </div>
+                    </div>
+                    
+                    
+                    
                 </div>
             </div>
         </div>

@@ -16,9 +16,6 @@ class InterfaceController extends Controller
     {
         $personalia = User::where('position_id', '2')->orderBy('name', 'asc')->get();
         $karyawan = User::where('position_id', '3')->orderBy('name', 'asc')->get();
-
-
-
         $role=Auth::user()->position_id;
 
         if ($role == '1') {
@@ -28,7 +25,7 @@ class InterfaceController extends Controller
             return view('interface.personalia');
         }
         else if ($role == '3') {
-            return view('interface.karyawan');
+            return redirect()->route('attendance.index');
         }
         else {
             return view('auth.login');

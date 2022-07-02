@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\InterfaceController;
 use App\Http\Controllers\DirekturController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SalaryController;
+use App\Models\Salary;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,4 +32,8 @@ Route::middleware(['auth'])->group(function() {
 
     Route::resource('/list-karyawan', DirekturController::class);
     Route::get('/list-personalia', [DirekturController::class, 'personalia'])->name('list-personalia');
+
+    Route::resource('/attendance', AttendanceController::class)->except(['create', 'edit', 'update', 'show', 'destroy']);
+    Route::resource('/salary', SalaryController::class)->except(['create', 'edit', 'update', 'destroy']);
+    Route::get('/salary/{id}/print', [SalaryController::class, 'print'])->name('salary.print');
 });
