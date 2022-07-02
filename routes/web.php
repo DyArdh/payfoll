@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InterfaceController;
+use App\Http\Controllers\DirekturController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,7 @@ Route::middleware(['guest'])->group(function() {
 Route::middleware(['auth'])->group(function() {
     Route::get('/logout', [LoginController::class, 'logout']);
     Route::resource('/interface', InterfaceController::class);
+
+    Route::resource('/list-karyawan', DirekturController::class);
+    Route::get('/list-personalia', DirekturController::class, 'personalia')->name('list-personalia');
 });

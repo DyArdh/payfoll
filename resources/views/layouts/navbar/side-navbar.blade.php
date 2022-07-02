@@ -16,7 +16,7 @@
                 <a class="nav-link" href="#">Personalia</a>
               @endcan
               @can('viewKaryawan', \App\Models\User::class)
-                <a class="nav-link" href="#">Karyawan</a>
+                <a class="nav-link" href="{{ route ('list-karyawan.index') }}">Karyawan</a>
               @endcan
             </nav>
           </div>
