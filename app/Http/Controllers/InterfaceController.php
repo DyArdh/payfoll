@@ -20,10 +20,10 @@ class InterfaceController extends Controller
         $role=Auth::user()->position_id;
 
         if ($role == '1') {
-            return view('direktur.list-karyawan', compact('karyawan'));
+            return redirect()->route('list-personalia');
         }
         else if ($role == '2') {
-            return view('interface.personalia', compact('personalia'));
+            return redirect()->route('list-karyawan.index');
         }
         else if ($role == '3') {
             return redirect()->route('attendance.index');

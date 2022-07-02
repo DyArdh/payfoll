@@ -17,6 +17,7 @@ class DirekturController extends Controller
         $karyawan = User::where('position_id', '3')->orderBy('name', 'asc')->paginate(10);
         return view('direktur.list-karyawan', compact('karyawan'));
     }
+    
     public function personalia ()
     {
         $personalia = User::where('position_id', '2')->orderBy('name', 'asc')->paginate(10);
@@ -30,7 +31,7 @@ class DirekturController extends Controller
      */
     public function create()
     {
-        //
+        return view('direktur.create-karyawan');
     }
 
     /**
@@ -41,7 +42,22 @@ class DirekturController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validations = $request->validate([
+            'name' => 'required|max:100',
+            'place_of_birth' => 'required|max:100',
+            'date_of_birth' => 'required',
+            'religion' => 'required',
+            'address' => 'required',
+            'phone' => 'required|numeric|digits_between:10,13|unique:users',
+            'email' => 'required|unique:users|email:dns|max:100',
+            'password' => 'required|min:8|max:255',
+        ]);
+
+        $validations['position_id'] = '3';
+        $validations['password'] = bcrypt($validations['password']);
+
+        User::create($validations);
+        return redirect()->route('list-karyawan.index')->with('success', 'Karyawan berhasil ditambahkan');
     }
 
     /**
