@@ -22,7 +22,7 @@ class InterfaceController extends Controller
         $role=Auth::user()->position_id;
 
         if ($role == '1') {
-            return view('interface.direktur', compact('karyawan', 'personalia'));
+            return view('direktur.list-karyawan', compact('karyawan', 'personalia'));
         }
         else if ($role == '2') {
             return view('interface.personalia');
