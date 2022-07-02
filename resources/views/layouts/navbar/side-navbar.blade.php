@@ -13,7 +13,7 @@
           <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
               @can('viewPersonalia', \App\Models\User::class)
-                <a class="nav-link" href="#">Personalia</a>
+                <a class="nav-link" href="{{ route ('list-personalia') }}">Personalia</a>
               @endcan
               @can('viewKaryawan', \App\Models\User::class)
                 <a class="nav-link" href="{{ route ('list-karyawan.index') }}">Karyawan</a>

@@ -28,5 +28,5 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('/interface', InterfaceController::class);
 
     Route::resource('/list-karyawan', DirekturController::class);
-    Route::get('/list-personalia', DirekturController::class, 'personalia')->name('list-personalia');
+    Route::get('/list-personalia', [DirekturController::class, 'personalia'])->name('list-personalia');
 });
