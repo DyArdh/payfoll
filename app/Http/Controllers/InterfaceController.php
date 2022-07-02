@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
-class ListKaryawanController extends Controller
+use Auth;
+class InterfaceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,26 @@ class ListKaryawanController extends Controller
      */
     public function index()
     {
-        return view('list-karyawan.index');
+        $personalia = User::where('position_id', '2')->orderBy('name', 'asc')->get();
+        $karyawan = User::where('position_id', '3')->orderBy('name', 'asc')->get();
+
+
+
+        $role=Auth::user()->position_id;
+
+        if ($role == '1') {
+            return view('interface.direktur', compact('karyawan', 'personalia'));
+        }
+        else if ($role == '2') {
+            return view('interface.personalia');
+        }
+        else if ($role == '3') {
+            return view('interface.karyawan');
+        }
+        else {
+            return view('auth.login');
+        }
+        
     }
 
     /**

@@ -2,6 +2,6 @@
 
 @section('content')
 <br>    
-<h1>MASUK GAN</h1>
+<h1>MASUK GAN Personalia</h1>
     
 @endsection
