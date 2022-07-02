@@ -19,7 +19,7 @@ class DirekturController extends Controller
     }
     public function personalia ()
     {
-        $personalia = User::where('position_id', '2')->orderBy('name', 'asc')->get();
+        $personalia = User::where('position_id', '2')->orderBy('name', 'asc')->paginate(10);
         return view('direktur.list-personalia', compact('personalia'));
     }
 

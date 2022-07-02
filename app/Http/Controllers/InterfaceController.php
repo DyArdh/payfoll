@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+
 class InterfaceController extends Controller
 {
     /**
@@ -14,8 +15,8 @@ class InterfaceController extends Controller
      */
     public function index()
     {
-        $personalia = User::where('position_id', '2')->orderBy('name', 'asc')->get();
-        $karyawan = User::where('position_id', '3')->orderBy('name', 'asc')->get();
+        $personalia = User::where('position_id', '2')->orderBy('name', 'asc')->paginate(10);
+        $karyawan = User::where('position_id', '3')->orderBy('name', 'asc')->paginate(10);
         $role=Auth::user()->position_id;
 
         if ($role == '1') {
