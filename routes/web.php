@@ -5,6 +5,7 @@ use App\Http\Controllers\InterfaceController;
 use App\Http\Controllers\DirekturController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Salary;
 use Illuminate\Support\Facades\Route;
 
@@ -38,4 +39,9 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('/attendance', AttendanceController::class)->except(['create', 'edit', 'update', 'show', 'destroy']);
     Route::resource('/salary', SalaryController::class)->except(['create', 'edit', 'update', 'destroy']);
     Route::get('/salary/{id}/print', [SalaryController::class, 'print'])->name('salary.print');
+    
+    Route::resource('/profile', ProfileController::class)->except(['create', 'show', 'destroy']);
+    Route::get('/profile/{id}/ubah', [ProfileController::class, 'ubah_pass'])->name('profile.ubah');
+    Route::post('/profile/{id}/update', [ProfileController::class, 'update_pass'])->name('profile.update.pass');
+    
 });

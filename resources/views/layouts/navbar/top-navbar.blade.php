@@ -14,7 +14,7 @@
           <i class="fas fa-angle-down fa-fw" style="color: #434a6a"></i>
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="#">Account</a></li>
+          <li><a class="dropdown-item" href="{{ route ('profile.index') }}">Account</a></li>
           <li><hr class="dropdown-divider" /></li>
           <li><a class="dropdown-item" href="/">Logout</a></li>
         </ul>
