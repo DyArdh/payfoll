@@ -15,8 +15,6 @@ class InterfaceController extends Controller
      */
     public function index()
     {
-        $personalia = User::where('position_id', '2')->orderBy('name', 'asc')->paginate(10);
-        $karyawan = User::where('position_id', '3')->orderBy('name', 'asc')->paginate(10);
         $role=Auth::user()->position_id;
 
         if ($role == '1') {

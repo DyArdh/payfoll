@@ -35,6 +35,16 @@ class DirekturController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createPers()
+    {
+        return view('direktur.create-personalia');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -58,6 +68,32 @@ class DirekturController extends Controller
 
         User::create($validations);
         return redirect()->route('list-karyawan.index')->with('success', 'Karyawan berhasil ditambahkan');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storePers(Request $request)
+    {
+        $validations = $request->validate([
+            'name' => 'required|max:100',
+            'place_of_birth' => 'required|max:100',
+            'date_of_birth' => 'required',
+            'religion' => 'required',
+            'address' => 'required',
+            'phone' => 'required|numeric|digits_between:10,13|unique:users',
+            'email' => 'required|unique:users|email:dns|max:100',
+            'password' => 'required|min:8|max:255',
+        ]);
+
+        $validations['position_id'] = '2';
+        $validations['password'] = bcrypt($validations['password']);
+
+        User::create($validations);
+        return redirect()->route('list-karyawan.index')->with('success', 'Personalia berhasil ditambahkan');
     }
 
     /**

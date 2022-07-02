@@ -63,7 +63,7 @@
                             {{ $personalia->links() }}
                         </div>
                         <div class="col-md-6 text-end">
-                            <button class="btn btn-primary">Tambah Personalia</button>
+                            <a href="{{ route('list-personalia.create') }}" class="btn btn-primary">Tambah Personalia</a>
                         </div>
                     </div>
                 </div>
