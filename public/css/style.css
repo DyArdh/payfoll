@@ -308,3 +308,11 @@ body {
 .sb-sidenav-light .sb-sidenav-footer {
     background-color: #e9ecef;
 }
+
+.acc-header {
+    width: 100%;
+    background-color: var(--main-color);
+    color: var(--text-color-light);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
