@@ -34,6 +34,18 @@
             <div class="sb-nav-link-icon"><i class="fa-solid fa-user-clock"></i></div>
             Rincian Absensi
           </a>
+
+          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseGaji" aria-expanded="false" aria-controls="collapseLayouts">
+            <div class="sb-nav-link-icon"><i class="fa-solid fa-money-check-dollar"></i></div>
+            Rincian Gaji
+            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+          </a>
+          <div class="collapse" id="collapseGaji" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+            <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="{{ route ('list-personalia') }}">Personalia</a>
+                <a class="nav-link" href="{{ route ('recaps.index') }}">Karyawan</a>
+            </nav>
+          </div>
         </div>
       </div>
     </nav>

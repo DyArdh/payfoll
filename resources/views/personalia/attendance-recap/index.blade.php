@@ -24,7 +24,7 @@
                                 <tr>
                                     <td>{{ $attendance->firstItem() + $key }}</td>
                                     <td>{{ $row->user->name }}</td>
-                                    <td>{{ date('F Y', strtotime($row->created_at)) }}</td>
+                                    <td>{{ date('d F Y   -   h:i A', strtotime($row->created_at)) }}</td>
                                     <td>{{ $row->time }}</td>
                                 </tr>              
                                 @empty
