@@ -14,40 +14,10 @@ class SalaryDetailController extends Controller
      */
     public function index()
     {
-        $salary = Salary::all();
-        var_dump('salary');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $salary = Salary::join('users', 'salary.name_id', '=', 'users.id')
+            ->where('position_id', '3')
+            ->paginate(10);
+        return view('personalia.salary-recap.index', compact('salary'));
     }
 
     /**
@@ -58,7 +28,9 @@ class SalaryDetailController extends Controller
      */
     public function edit($id)
     {
-        //
+        $salary = Salary::findOrFail($id);
+
+        return view('personalia.salary-recap.edit', compact('salary'));
     }
 
     /**

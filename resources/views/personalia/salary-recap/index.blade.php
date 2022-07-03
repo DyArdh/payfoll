@@ -31,13 +31,13 @@
                             @forelse ($salary as $key => $row)
                             <tr>
                                 <td>{{ $salary->firstItem() + $key }}</td>
-                                <td>{{ $row->name }}</td>
+                                <td>{{ $row->user->name }}</td>
                                 <td>{{ date('F Y', strtotime($row->created_at)) }}</td>
                                 <td>{{ $row->salary }}</td>
-                                <td>0{{ $row->overtime_salary }}</td>
+                                <td>{{ $row->overtime_salary }}</td>
                                 <td>
                                     <div class="action-btn d-flex">
-                                        <a class="me-2" href="">
+                                        <a class="me-2" href="{{ route('karyawan-salary.edit', $row->id) }}">
                                             <button class="badge rounded-pill bg-warning px-3">Edit</button>
                                         </a>
                                     </div>

@@ -45,15 +45,10 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('/attendance/details', AttendanceDetailController::class);
     Route::resource('/salary', SalaryController::class)->except(['edit', 'update', 'destroy']);
     Route::get('/salary/{id}/print', [SalaryController::class, 'print'])->name('salary.print');
-<<<<<<< HEAD
-    Route::resource('/salary/recaps', SalaryDetailController::class);
-=======
-
+    
     Route::get('/salary/{id}/add', [SalaryController::class, 'gaji'])->name('salary.add');
     Route::post('/salary/{id}/input', [SalaryController::class, 'gaji_input'])->name('salary.add.input');
-    
-    
->>>>>>> 07d7aa039c688bbdfdb41fac2930951e79aa00e4
+    Route::resource('/details/karyawan-salary', SalaryDetailController::class);
     
     Route::resource('/profile', ProfileController::class)->except(['create', 'show', 'destroy']);
     Route::get('/profile/{id}/ubah', [ProfileController::class, 'ubah_pass'])->name('profile.ubah');

@@ -43,7 +43,7 @@
           <div class="collapse" id="collapseGaji" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
                 <a class="nav-link" href="{{ route ('list-personalia') }}">Personalia</a>
-                <a class="nav-link" href="{{ route ('recaps.index') }}">Karyawan</a>
+                <a class="nav-link" href="{{ route ('karyawan-salary.index') }}">Karyawan</a>
             </nav>
           </div>
         </div>
