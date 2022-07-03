@@ -94,9 +94,9 @@ class SalaryController extends Controller
         Salary::create($validations);
 
         if ($id == 3) {
-            return redirect()->route('list-karyawan.index')->with('success', 'Karyawan berhasil ditambahkan');
+            return redirect()->route('list-karyawan.index')->with('success', 'Gaji karyawan berhasil ditambahkan');
         }else if ($id == 2){
-            return redirect()->route('list-personalia')->with('success', 'Karyawan berhasil ditambahkan');
+            return redirect()->route('list-personalia')->with('success', 'Gaji personalia berhasil ditambahkan');
         }
 
 
