@@ -29,7 +29,7 @@ Route::middleware(['guest'])->group(function() {
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/logout', [LoginController::class, 'logout']);
-    Route::resource('/interface', InterfaceController::class);
+    Route::resource('/interface', InterfaceController::class)->except('create', 'edit', 'store', 'update', 'destroy');
 
     Route::resource('/list-karyawan', DirekturController::class);
     Route::get('/list-personalia', [DirekturController::class, 'personalia'])->name('list-personalia');
