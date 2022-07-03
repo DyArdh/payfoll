@@ -98,9 +98,5 @@ class SalaryController extends Controller
         }else if ($id == 2){
             return redirect()->route('list-personalia')->with('success', 'Gaji personalia berhasil ditambahkan');
         }
-
-
-        
-        
     }
 }
