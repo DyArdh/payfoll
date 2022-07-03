@@ -34,4 +34,10 @@ class AttendanceController extends Controller
         Attendance::create($validations);
         return redirect()->route('attendance.index')->with('success', 'Absensi Berhasil Disimpan. Sekarang Balik Kerja!');
     }
+
+    public function attendDetails()
+    {
+        $attendance = Attendance::orderBy('name_id', 'asc')->paginate(10);
+        return view('personalia.attendance-recap.index', compact('attendance'));
+    }
 }
