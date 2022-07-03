@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('/interface', InterfaceController::class)->except('create', 'edit', 'store', 'update', 'destroy');
 
     Route::resource('/list-karyawan', DirekturController::class);
+    
+
     Route::get('/list-personalia', [DirekturController::class, 'personalia'])->name('list-personalia');
     Route::post('/list-personalia', [DirekturController::class, 'storePers'])->name('list-personalia.store');
     Route::get('/list-personalia/create', [DirekturController::class, 'createPers'])->name('list-personalia.create');
@@ -43,7 +45,15 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('/attendance/details', AttendanceDetailController::class);
     Route::resource('/salary', SalaryController::class)->except(['edit', 'update', 'destroy']);
     Route::get('/salary/{id}/print', [SalaryController::class, 'print'])->name('salary.print');
+<<<<<<< HEAD
     Route::resource('/salary/recaps', SalaryDetailController::class);
+=======
+
+    Route::get('/salary/{id}/add', [SalaryController::class, 'gaji'])->name('salary.add');
+    Route::post('/salary/{id}/input', [SalaryController::class, 'gaji_input'])->name('salary.add.input');
+    
+    
+>>>>>>> 07d7aa039c688bbdfdb41fac2930951e79aa00e4
     
     Route::resource('/profile', ProfileController::class)->except(['create', 'show', 'destroy']);
     Route::get('/profile/{id}/ubah', [ProfileController::class, 'ubah_pass'])->name('profile.ubah');

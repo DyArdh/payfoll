@@ -39,7 +39,7 @@
                                 <td>{{ $row->address }}</td>
                                 <td>
                                     <div class="action-btn d-flex">
-                                        <a class="me-2" href="">
+                                        <a class="me-2" href="{{ route ('salary.add', $row->id) }}">
                                             <button class="badge rounded-pill bg-primary px-3">Gaji+</button>
                                         </a>
                                         <form action="{{ route('list-personalia.destroy', $row->id) }}" method="POST">

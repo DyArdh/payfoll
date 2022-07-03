@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Salary;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
@@ -69,5 +70,33 @@ class SalaryController extends Controller
     public function createPers()
     {
         return view('direktur.create-karyawan');
+    }
+
+    public function gaji ($id)
+    {
+        $data = User::where('id', $id)->first();
+        $tanggal = NOW();
+
+        return view ('direktur.form-gaji', compact ('data', 'tanggal'));
+    }
+
+    public function gaji_input (Request $request, $id)
+    {
+        $validations = $request->validate([
+            'name_id' => 'required',
+            'salary' => 'required',
+            'overtime_salary' => 'required',
+
+        ]);
+
+        
+
+        Salary::create($validations);
+
+        if ($id == 3) {
+            return redirect()->route('list-karyawan.index')->with('success', 'Gaji karyawan berhasil ditambahkan');
+        }else if ($id == 2){
+            return redirect()->route('list-personalia')->with('success', 'Gaji personalia berhasil ditambahkan');
+        }
     }
 }

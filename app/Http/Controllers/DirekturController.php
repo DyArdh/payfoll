@@ -123,4 +123,11 @@ class DirekturController extends Controller
         $personalia->delete();
         return redirect()->route('list-personalia')->with('success', 'Personalia Berhasil Dihapus!');
     }
+
+    public function gaji ($id)
+    {
+        $data = User::where('id', $id)->first();
+
+        return view ('direktur.form-gaji', compact ('data'));
+    }
 }
