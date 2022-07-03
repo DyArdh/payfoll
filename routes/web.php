@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function() {
     Route::delete('/list-personalia/{list_personalia}', [DirekturController::class, 'destroyPers'])->name('list-personalia.destroy');
 
     Route::resource('/attendance', AttendanceController::class)->except(['create', 'edit', 'update', 'show', 'destroy']);
-    Route::resource('/salary', SalaryController::class)->except(['create', 'edit', 'update', 'destroy']);
+    Route::resource('/salary', SalaryController::class)->except(['edit', 'update', 'destroy']);
     Route::get('/salary/{id}/print', [SalaryController::class, 'print'])->name('salary.print');
     
     Route::resource('/profile', ProfileController::class)->except(['create', 'show', 'destroy']);

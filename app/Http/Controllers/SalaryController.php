@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Salary;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use PDF;
+use Barryvdh\DomPDF\PDF;
 
 class SalaryController extends Controller
 {
@@ -33,7 +33,6 @@ class SalaryController extends Controller
         $total = $data->salary + $data->overtime_salary;
         $nama = date('F Y', strtotime($data->created_at));
 
-        // return view('karyawan.gaji.print', compact('data', 'total'));
         $pdf = PDF::loadview('karyawan.gaji.print',['data'=>$data, 'total' => $total ]);
     	return $pdf->download($nama . '.pdf');
     }
@@ -50,5 +49,25 @@ class SalaryController extends Controller
         $total = $data->salary + $data->overtime_salary;
 
         return view('karyawan.gaji.show', compact('data', 'total'));
+    }
+
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('direktur.create-karyawan');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createPers()
+    {
+        return view('direktur.create-karyawan');
     }
 }
