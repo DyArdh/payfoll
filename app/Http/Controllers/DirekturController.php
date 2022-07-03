@@ -93,7 +93,7 @@ class DirekturController extends Controller
         $validations['password'] = bcrypt($validations['password']);
 
         User::create($validations);
-        return redirect()->route('list-karyawan.index')->with('success', 'Personalia berhasil ditambahkan');
+        return redirect()->route('list-personalia')->with('success', 'Personalia berhasil ditambahkan');
     }
 
     /**
@@ -138,6 +138,23 @@ class DirekturController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $karyawan = User::findOrFail($id);
+
+        $karyawan->delete();
+        return redirect()->route('list-karyawan.index')->with('success', 'Karyawan Berhasil Dihapus!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyPers($id)
+    {
+        $personalia = User::findOrFail($id);
+
+        $personalia->delete();
+        return redirect()->route('list-personalia')->with('success', 'Personalia Berhasil Dihapus!');
     }
 }

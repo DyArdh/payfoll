@@ -38,13 +38,15 @@
                                 <td>0{{ $row->phone }}</td>
                                 <td>{{ $row->address }}</td>
                                 <td>
-                                    <div class="action-btn">
+                                    <div class="action-btn d-flex">
                                         <a class="me-2" href="">
-                                            <span class="badge rounded-pill bg-primary px-3">Gaji+</span>
+                                            <button class="badge rounded-pill bg-primary px-3">Gaji+</button>
                                         </a>
-                                        <a href="">
-                                            <span class="badge rounded-pill bg-danger px-3">Hapus</span>
-                                        </a>
+                                        <form action="{{ route('list-personalia.destroy', $row->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="badge rounded-pill bg-danger px-3">Hapus</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>              

@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/list-personalia', [DirekturController::class, 'personalia'])->name('list-personalia');
     Route::post('/list-personalia', [DirekturController::class, 'storePers'])->name('list-personalia.store');
     Route::get('/list-personalia/create', [DirekturController::class, 'createPers'])->name('list-personalia.create');
+    Route::delete('/list-personalia/{list_personalia}', [DirekturController::class, 'destroyPers'])->name('list-personalia.destroy');
 
     Route::resource('/attendance', AttendanceController::class)->except(['create', 'edit', 'update', 'show', 'destroy']);
     Route::resource('/salary', SalaryController::class)->except(['create', 'edit', 'update', 'destroy']);
