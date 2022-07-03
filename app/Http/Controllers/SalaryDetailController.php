@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Salary;
 use Illuminate\Http\Request;
-
+use DB;
 class SalaryDetailController extends Controller
 {
     /**
@@ -42,8 +42,19 @@ class SalaryDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $params = $request->except('_token');
+        
+        $product = Salary::findOrFail($id);
+
+        $save = false;
+        $save = DB::transaction(function() use ($product, $params){
+            $product->update($params);
+            return true;
+        });
+
+        return redirect()->route('karyawan-salary.index')->with('success', 'Gaji berhasil diperbarui!');
     }
+    
 
     /**
      * Remove the specified resource from storage.

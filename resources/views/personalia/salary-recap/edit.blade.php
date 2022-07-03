@@ -15,14 +15,12 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('karyawan-salary.update') }}" method="POST">
+                    <form action="{{ route('karyawan-salary.update', $salary->id) }}" method="POST">
                         @csrf
                         @method('PUT')
-                        <div class="form-group row mb-2 px-3">
-                            <label class="form-label col-md-3">Nama</label>
-                            <p class="col-md-9">{{ $salary->name_id }}</p>
+                  
                             <input type="hidden" name="name_id" id="name_id" value="{{ $salary->name_id }}">
-                        </div>
+          
                         <div class="form-group row mb-2 px-3">
                             <label class="form-label col-md-3">Gaji Pokok</label>
                             <input type="text" class="form-control" name="salary" id="salary" value="{{ $salary->salary }}">

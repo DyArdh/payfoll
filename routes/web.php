@@ -6,8 +6,10 @@ use App\Http\Controllers\InterfaceController;
 use App\Http\Controllers\DirekturController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SalaryController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SalaryDetailController;
+use App\Http\Controllers\ProfileController;
+
+use App\Http\Controllers\DetailSalaryController;
 use App\Models\Salary;
 use Illuminate\Support\Facades\Route;
 
@@ -34,8 +36,6 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('/interface', InterfaceController::class)->except('create', 'edit', 'store', 'update', 'destroy');
 
     Route::resource('/list-karyawan', DirekturController::class);
-    
-
     Route::get('/list-personalia', [DirekturController::class, 'personalia'])->name('list-personalia');
     Route::post('/list-personalia', [DirekturController::class, 'storePers'])->name('list-personalia.store');
     Route::get('/list-personalia/create', [DirekturController::class, 'createPers'])->name('list-personalia.create');
@@ -49,9 +49,15 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/salary/{id}/add', [SalaryController::class, 'gaji'])->name('salary.add');
     Route::post('/salary/{id}/input', [SalaryController::class, 'gaji_input'])->name('salary.add.input');
     Route::resource('/details/karyawan-salary', SalaryDetailController::class);
-    
+
+
     Route::resource('/profile', ProfileController::class)->except(['create', 'show', 'destroy']);
     Route::get('/profile/{id}/ubah', [ProfileController::class, 'ubah_pass'])->name('profile.ubah');
     Route::post('/profile/{id}/update', [ProfileController::class, 'update_pass'])->name('profile.update.pass');
     
+    Route::resource('/details', SalaryDetailController::class)->except('show');
+
+    // Route::resource('/detail-salary', DetailSalaryController::class);
+    
+
 });
