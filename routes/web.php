@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AttendanceDetailController;
 use App\Http\Controllers\InterfaceController;
 use App\Http\Controllers\DirekturController;
 use App\Http\Controllers\LoginController;
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function() {
     Route::delete('/list-personalia/{list_personalia}', [DirekturController::class, 'destroyPers'])->name('list-personalia.destroy');
 
     Route::resource('/attendance', AttendanceController::class)->except(['create', 'edit', 'update', 'show', 'destroy']);
+    Route::resource('/attendance/details', AttendanceDetailController::class);
     Route::resource('/salary', SalaryController::class)->except(['edit', 'update', 'destroy']);
     Route::get('/salary/{id}/print', [SalaryController::class, 'print'])->name('salary.print');
     

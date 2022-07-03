@@ -29,6 +29,11 @@
             <div class="sb-nav-link-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
             Rincian Gaji
           </a>
+
+          <a class="nav-link" href="{{ route('details.index') }}">
+            <div class="sb-nav-link-icon"><i class="fa-solid fa-user-clock"></i></div>
+            Rincian Absensi
+          </a>
         </div>
       </div>
     </nav>
