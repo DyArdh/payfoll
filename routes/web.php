@@ -49,6 +49,10 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/salary/{id}/add', [SalaryController::class, 'gaji'])->name('salary.add');
     Route::post('/salary/{id}/input', [SalaryController::class, 'gaji_input'])->name('salary.add.input');
     Route::resource('/karyawan-salary', SalaryDetailController::class);
+    
+    Route::get('/personalia-salary', [SalaryDetailController::class, 'personalia_index'])->name('personalia-salary');
+    Route::get('/personalia-salary/{id}/edit', [SalaryDetailController::class, 'personalia_edit'])->name('karyawan-salary.personalia.edit');
+    Route::put('/personalia-salary/{id}/update', [SalaryDetailController::class, 'personalia_update'])->name('personalia.update.salary');
 
 
     Route::resource('/profile', ProfileController::class)->except(['create', 'show', 'destroy']);

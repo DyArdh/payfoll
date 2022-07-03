@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">
-        <strong>Edit Gaji Karyawan</strong>
+        <strong>Edit Gaji Personalia</strong>
     </div>
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
@@ -15,11 +15,11 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('karyawan-salary.update', $salary->id) }}" method="POST">
+                    <form action="{{ route('personalia.update.salary', $salary->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                   
-                  
+                           
           
                         <div class="form-group row mb-2 px-3">
                             <label class="form-label col-md-3">Gaji Pokok</label>
