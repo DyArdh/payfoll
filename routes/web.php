@@ -9,7 +9,7 @@ use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\SalaryDetailController;
 use App\Http\Controllers\ProfileController;
 
-use App\Http\Controllers\DetailSalaryController;
+
 use App\Models\Salary;
 use Illuminate\Support\Facades\Route;
 
@@ -48,7 +48,7 @@ Route::middleware(['auth'])->group(function() {
     
     Route::get('/salary/{id}/add', [SalaryController::class, 'gaji'])->name('salary.add');
     Route::post('/salary/{id}/input', [SalaryController::class, 'gaji_input'])->name('salary.add.input');
-    Route::resource('/details/karyawan-salary', SalaryDetailController::class);
+    Route::resource('/karyawan-salary', SalaryDetailController::class);
 
 
     Route::resource('/profile', ProfileController::class)->except(['create', 'show', 'destroy']);
@@ -57,7 +57,7 @@ Route::middleware(['auth'])->group(function() {
     
     Route::resource('/details', SalaryDetailController::class)->except('show');
 
-    // Route::resource('/detail-salary', DetailSalaryController::class);
+    
     
 
 });
