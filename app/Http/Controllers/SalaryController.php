@@ -6,7 +6,7 @@ use App\Models\Salary;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\PDF;
+use PDF;
 
 class SalaryController extends Controller
 {
@@ -17,6 +17,8 @@ class SalaryController extends Controller
      */
     public function index()
     {
+        $this->authorize('view', Salary::class);
+
         $user = Auth::User()->id;
         $data = Salary::where('name_id', $user)->orderBy('id', 'desc')->paginate(10);
 
@@ -30,6 +32,8 @@ class SalaryController extends Controller
      */
     public function print($salary)
     {
+        $this->authorize('view', Salary::class);
+
         $data = Salary::where('id', $salary)->first();
         $total = $data->salary + $data->overtime_salary;
         $nama = date('F Y', strtotime($data->created_at));
@@ -46,34 +50,18 @@ class SalaryController extends Controller
      */
     public function show($salary)
     {
+        $this->authorize('view', Salary::class);
+
         $data = Salary::where('id', $salary)->first();
         $total = $data->salary + $data->overtime_salary;
 
         return view('karyawan.gaji.show', compact('data', 'total'));
     }
 
-     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('direktur.create-karyawan');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createPers()
-    {
-        return view('direktur.create-karyawan');
-    }
-
     public function gaji ($id)
     {
+        $this->authorize('createSalary', Salary::class);
+
         $data = User::where('id', $id)->first();
         $tanggal = NOW();
 

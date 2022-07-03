@@ -24,7 +24,9 @@
                             <th>Tanggal</th>
                             <th>Gaji Pokok</th>                            
                             <th>Gaji Lembur</th>
+                            @can('viewAsPersonalia', \App\Models\User::class)
                             <th>Action</th>
+                            @endcan
                         </thead>
 
                         <tbody>
@@ -35,6 +37,7 @@
                                 <td>{{ date('F Y', strtotime($row->created_at)) }}</td>
                                 <td>{{ $row->salary }}</td>
                                 <td>{{ $row->overtime_salary }}</td>
+                                @can('viewAsPersonalia', \App\Models\User::class)
                                 <td>
                                     <div class="action-btn d-flex">
                                         <a class="me-2" href="{{ route('karyawan-salary.edit', $row->id) }}">
@@ -42,6 +45,7 @@
                                         </a>
                                     </div>
                                 </td>
+                                @endcan
                             </tr>              
                             @empty
                             <tr>

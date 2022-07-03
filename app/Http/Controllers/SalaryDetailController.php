@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Salary;
 use App\Models\User;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 class SalaryDetailController extends Controller
 {
     /**
@@ -15,6 +15,7 @@ class SalaryDetailController extends Controller
      */
     public function index()
     {
+
         $salary = Salary::join('users', 'salary.name_id', '=', 'users.id')
             ->where('position_id', '3')
             ->paginate(10);
@@ -29,14 +30,15 @@ class SalaryDetailController extends Controller
      */
     public function edit($id)
     {
+
         $salary = Salary::findOrFail($id);
-        // $profile = User::where('id', $id);
 
         return view('personalia.salary-recap.edit', compact('salary'));
     }
     
     public function personalia_index()
     {
+
         $salary = Salary::join('users', 'salary.name_id', '=', 'users.id')
         ->where('position_id', '2')
         ->paginate(10);
@@ -46,10 +48,10 @@ class SalaryDetailController extends Controller
 
     public function personalia_edit($id)
     {
-        $salary = Salary::findOrFail($id);
-        $profile = User::where('id', $id);
 
-        return view('personalia.salary-recap.edit-personalia', compact('salary', 'profile'));
+        $salary = Salary::findOrFail($id);
+
+        return view('personalia.salary-recap.edit-personalia', compact('salary'));
     }
     
     public function personalia_update(Request $request, $id)
@@ -57,17 +59,6 @@ class SalaryDetailController extends Controller
         $params = $request->except('_token');
         
         $salary = Salary::findOrFail($id);
-
-        // $attr = $request->validate([
-        //     'salary' => ['string', 'min:3', 'max:20', 'required'],
-        //     'overtime_salary' => ['string', 'email', 'min:3', 'max:20', 'required'],
-        //     'agama' => ['string', 'min:3', 'max:20', 'required'],
-        //     'tempat_lahir' => ['string', 'min:3', 'max:20', 'required'],
-        //     'tanggal_lahir' => ['date', 'required'],
-        //     'telepon' => ['string', 'numeric', 'required'],
-        //     'alamat' => ['string', 'max:200', 'required'],
-        // ]);
-
 
         $save = false;
         $save = DB::transaction(function() use ($salary, $params){
@@ -77,7 +68,7 @@ class SalaryDetailController extends Controller
 
         // var_dump($salary)
 
-        return redirect()->route('personalia.salary.index')->with('success', 'Gaji berhasil diperbarui!');
+        return redirect()->route('personalia-salary')->with('success', 'Gaji berhasil diperbarui!');
     }
     /**
      * Update the specified resource in storage.
@@ -99,17 +90,5 @@ class SalaryDetailController extends Controller
         });
 
         return redirect()->route('karyawan-salary.index')->with('success', 'Gaji berhasil diperbarui!');
-    }
-    
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

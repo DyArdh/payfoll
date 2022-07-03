@@ -25,7 +25,9 @@
                             <th>Agama</th>                            
                             <th>Telepon</th>
                             <th>Alamat</th>
+                            @can('viewAsPersonalia', \App\Models\User::class)
                             <th>Action</th>
+                            @endcan
                         </thead>
 
                         <tbody>
@@ -37,6 +39,7 @@
                                 <td>{{ $row->religion }}</td>
                                 <td>0{{ $row->phone }}</td>
                                 <td>{{ $row->address }}</td>
+                                @can('viewAsPersonalia', \App\Models\User::class)
                                 <td>
                                     <div class="action-btn d-flex">
                                         <a class="me-2" href="{{ route ('salary.add', $row->id) }}">
@@ -49,6 +52,7 @@
                                         </form>
                                     </div>
                                 </td>
+                                @endcan
                             </tr>              
                             @empty
                             <tr>
